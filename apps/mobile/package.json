@@ -1,0 +1,8 @@
+{
+  "name": "mobile",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "flutter run",
+    "build": "flutter build apk"
+  }
+}

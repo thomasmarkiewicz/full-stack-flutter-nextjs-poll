@@ -21,3 +21,51 @@
 - The `nx-generate` skill handles generator discovery internally - don't call nx_docs just to look up generator syntax
 
 <!-- nx configuration end-->
+
+Project Overview:
+I am building a "Pre-emptive Strike" MVP application for an upcoming technical interview with Anketa tomorrow. The goal is to demonstrate my ability to build a full-stack application with a specific focus on Optimistic UI state management on the frontend.
+
+Tech Stack:
+
+Workspace: Nx Monorepo running inside a Docker DevContainer.
+Backend: NestJS API with Prisma ORM (using v7 Early Access config syntax) and a local PostgreSQL database.
+Frontend: Flutter mobile app using flutter_bloc (modern on<Event> syntax) for strict, clean state management.
+Networking: The backend connects to Postgres via localhost:5432 (host networking), and Flutter connects to the local NestJS API.
+Current State & Accomplishments:
+
+DevContainer Setup: Completely configured with host networking and USB passthrough for Android physical device debugging.
+Database & Backend:
+PostgreSQL is running and the database is synced (db push applied).
+The database is seeded with a dummy Poll and Option tables (e.g., "React Native vs Flutter?").
+The NestJS API is up and running.
+Crucial Detail: I intentionally injected a setTimeout (2-second artificial delay) into the NestJS POST /vote endpoint. This is specifically to prove to the interviewers that the Flutter UI updates optimistically before the network request actually completes.
+Next Steps (Where I need your help):
+We are now moving entirely to the Flutter frontend (apps/mobile). I need to:
+
+Set up the Flutter BLoC architecture to consume the NestJS REST API.
+Build a simple, clean UI to display the polling data.
+Implement the Optimistic UI pattern in BLoC: When a user taps a poll option, the UI must update instantly. Behind the scenes, the app should fire the API request. If the request fails, it should roll back the state; if it succeeds (after the 2-second delay), it should seamlessly confirm the state.
+Please acknowledge this context and provide a quick outline of how we should structure the BLoC events and state for this Optimistic UI implementation.Project Overview:
+I am building a "Pre-emptive Strike" MVP application for an upcoming technical interview with Anketa tomorrow. The goal is to demonstrate my ability to build a full-stack application with a specific focus on Optimistic UI state management on the frontend.
+
+Tech Stack:
+
+Workspace: Nx Monorepo running inside a Docker DevContainer.
+Backend: NestJS API with Prisma ORM (using v7 Early Access config syntax) and a local PostgreSQL database.
+Frontend: Flutter mobile app using flutter_bloc (modern on<Event> syntax) for strict, clean state management.
+Networking: The backend connects to Postgres via localhost:5432 (host networking), and Flutter connects to the local NestJS API.
+Current State & Accomplishments:
+
+DevContainer Setup: Completely configured with host networking and USB passthrough for Android physical device debugging.
+Database & Backend:
+PostgreSQL is running and the database is synced (db push applied).
+The database is seeded with a dummy Poll and Option tables (e.g., "React Native vs Flutter?").
+The NestJS API is up and running.
+Crucial Detail: I intentionally injected a setTimeout (2-second artificial delay) into the NestJS POST /vote endpoint. This is specifically to prove to the interviewers that the Flutter UI updates optimistically before the network request actually completes.
+Next Steps (Where I need your help):
+We are now moving entirely to the Flutter frontend (apps/mobile). I need to:
+
+Set up the Flutter BLoC architecture to consume the NestJS REST API.
+Build a simple, clean UI to display the polling data.
+Implement the Optimistic UI pattern in BLoC: When a user taps a poll option, the UI must update instantly. Behind the scenes, the app should fire the API request. If the request fails, it should roll back the state; if it succeeds (after the 2-second delay), it should seamlessly confirm the state.
+Please acknowledge this context and provide a quick outline of how we should structure the BLoC events and state for this Optimistic UI implementation.

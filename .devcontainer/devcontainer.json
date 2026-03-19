@@ -1,0 +1,45 @@
+{
+  "name": "Anketa Nx Stack",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspace",
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "dart.flutterSdkPath": "/opt/flutter",
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[dart]": {
+          "editor.defaultFormatter": "Dart-Code.dart-code"
+        },
+        "[prisma]": {
+          "editor.defaultFormatter": "Prisma.prisma"
+        },
+        "npm.packageManager": "bun"
+      },
+      "extensions": [
+        "nrwl.angular-console",
+        "Dart-Code.flutter",
+        "Dart-Code.dart",
+        "Prisma.prisma",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "oven.bun-vscode",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ]
+    }
+  },
+  "remoteUser": "node",
+  "postCreateCommand": "sudo chown -R node:node /workspace/node_modules 2>/dev/null || true && sudo npm install -g nx && printf 'sdk.dir=/opt/android-sdk\nflutter.sdk=/opt/flutter\n' > /workspace/apps/mobile/android/local.properties",
+
+  "containerEnv": {
+    "DISPLAY": "${localEnv:DISPLAY}",
+    "NX_TUI": "false",
+    "JAVA_HOME": "/usr/lib/jvm/java-21-openjdk-amd64",
+    "ANDROID_HOME": "/opt/android-sdk",
+    "ANDROID_SDK_ROOT": "/opt/android-sdk",
+    "PATH": "/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/platform-tools:/opt/flutter/bin:/usr/lib/jvm/java-21-openjdk-amd64/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+  }
+}
