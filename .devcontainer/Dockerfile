@@ -16,6 +16,7 @@ RUN echo "export PATH=\"/home/node/.bun/bin:\$PATH\"" >> /home/node/.bashrc
 # ── Android SDK ──────────────────────────────────────────────────────────────
 ENV ANDROID_SDK_ROOT=/opt/android-sdk
 ENV ANDROID_HOME=${ANDROID_SDK_ROOT}
+ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 ENV PATH=${ANDROID_SDK_ROOT}/cmdline-tools/latest/bin:${ANDROID_SDK_ROOT}/platform-tools:${PATH}
 
 # Install cmdline-tools
@@ -41,7 +42,6 @@ RUN yes | sdkmanager --licenses \
 
 # Install Flutter SDK globally
 ENV FLUTTER_HOME=/opt/flutter
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
 ENV PATH=${FLUTTER_HOME}/bin:${JAVA_HOME}/bin:${PATH}
 
 RUN git clone --depth 1 -b stable https://github.com/flutter/flutter.git ${FLUTTER_HOME} \
