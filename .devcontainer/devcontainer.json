@@ -16,7 +16,9 @@
         "[prisma]": {
           "editor.defaultFormatter": "Prisma.prisma"
         },
-        "npm.packageManager": "bun"
+        "npm.packageManager": "bun",
+        "plantuml.jar": "/opt/plantuml.jar",
+        "plantuml.render": "Local"
       },
       "extensions": [
         "nrwl.angular-console",
@@ -27,12 +29,14 @@
         "esbenp.prettier-vscode",
         "oven.bun-vscode",
         "GitHub.copilot",
-        "GitHub.copilot-chat"
+        "GitHub.copilot-chat",
+        "jebbs.plantuml",
+        "bierner.markdown-mermaid"
       ]
     }
   },
   "remoteUser": "node",
-  "postCreateCommand": "sudo chown -R node:node /workspace/node_modules 2>/dev/null || true && sudo npm install -g nx && printf 'sdk.dir=/opt/android-sdk\nflutter.sdk=/opt/flutter\n' > /workspace/apps/mobile/android/local.properties",
+  "postCreateCommand": "sudo chown -R node:node /workspace/node_modules 2>/dev/null || true && sudo npm install -g nx @mermaid-js/mermaid-cli && printf 'sdk.dir=/opt/android-sdk\nflutter.sdk=/opt/flutter\n' > /workspace/apps/flutter/android/local.properties",
 
   "containerEnv": {
     "DISPLAY": "${localEnv:DISPLAY}",
