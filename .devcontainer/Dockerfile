@@ -27,13 +27,12 @@ RUN mkdir -p ${ANDROID_SDK_ROOT}/cmdline-tools \
     && mv cmdline-tools ${ANDROID_SDK_ROOT}/cmdline-tools/latest \
     && rm cmdline-tools.zip
 
-# Accept all licenses and install required SDK components (incl. NDK Flutter auto-pulls)
+# Accept all licenses and install required SDK components (Flutter will auto-pull NDK when needed)
 RUN yes | sdkmanager --licenses \
     && sdkmanager \
         "platform-tools" \
         "platforms;android-36" \
         "build-tools;36.0.0" \
-        "ndk;27.0.12077973" \
     && chown -R node:node ${ANDROID_SDK_ROOT} \
     # Make the apt-installed SDK writable and symlink build-tools so Flutter's aapt lookup works
     && mkdir -p /usr/lib/android-sdk \
