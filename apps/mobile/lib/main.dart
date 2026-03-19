@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/poll_bloc.dart';
-import 'bloc/poll_event.dart';
-import 'data/repositories/poll_repository_impl.dart';
-import 'ui/poll_page.dart';
+import 'router.dart';
 
 // ── Change this to your machine's LAN IP when testing on a physical device ──
 const String _apiBaseUrl =
@@ -18,22 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (_) =>
-          PollBloc(repository: PollRepositoryImpl(baseUrl: _apiBaseUrl))
-            ..add(const PollsLoadRequested()),
-      child: MaterialApp(
-        title: 'Anketa Poll',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: Colors.deepPurple,
-            brightness: Brightness.dark,
-          ),
-          useMaterial3: true,
+    return MaterialApp.router(
+      title: 'Anketa Poll',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.deepPurple,
+          brightness: Brightness.dark,
         ),
-        home: const PollPage(),
+        useMaterial3: true,
       ),
+      routerConfig: buildRouter(apiBaseUrl: _apiBaseUrl),
     );
   }
 }
