@@ -48,7 +48,8 @@ RUN git clone --depth 1 -b stable https://github.com/flutter/flutter.git ${FLUTT
     && flutter config --no-analytics \
     && flutter config --android-sdk ${ANDROID_SDK_ROOT} \
     && flutter precache \
-    && chown -R node:node ${FLUTTER_HOME}
+    && chown -R node:node ${FLUTTER_HOME} \
+    && chmod -R a+rw ${FLUTTER_HOME}
 
 # ── PlantUML ─────────────────────────────────────────────────────────────────
 RUN curl -fsSL https://github.com/plantuml/plantuml/releases/latest/download/plantuml.jar \
@@ -57,4 +58,3 @@ RUN curl -fsSL https://github.com/plantuml/plantuml/releases/latest/download/pla
 # ── Puppeteer / Mermaid CLI (uses system Chromium) ───────────────────────────
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium
-    && chmod -R a+rw ${FLUTTER_HOME}
